@@ -2,6 +2,7 @@ package com.mangkyu.test;
 
 import java.util.*;
 
+// 프로그래머스 LV2 문제
 public class OpenChat {
     public static void main(String[] args) {
         new OpenChat().solution(new String[]{});
