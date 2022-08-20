@@ -19,7 +19,7 @@ public class Quiz1 {
         List<String[]> csvLines = readCsvLines();
 
         csvLines.forEach(s -> System.out.println(Arrays.toString(s)));
-
+       
         Map<String, Integer> collect = csvLines.stream().map(strArr -> strArr[1].replaceAll("\\s", ""))
                 .flatMap(str -> Arrays.stream(str.split(":")))
                 .collect(Collectors.toMap(str -> str, str -> 1, (oldValue, newValue) -> oldValue + 1));
