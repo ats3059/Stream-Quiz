@@ -37,12 +37,19 @@ public class Quiz4 {
                 .sorted(Comparator.comparingInt(Transaction::getValue)).collect(Collectors.toList());
     }
 
-    public List<String> quiz2() {
-        return Collections.emptyList();
+    public List<String> quiz2()
+    {
+        return transactions.stream()
+                .map(t -> t.getTrader().getCity()).distinct().collect(Collectors.toList());
     }
 
     public List<Trader> quiz3() {
-        return Collections.emptyList();
+        return transactions.stream()
+                .filter(trade -> "Seoul".equals(trade.getTrader().getCity()))
+                .map(Transaction::getTrader)
+                .distinct()
+                .sorted(Comparator.comparing(t -> t.getName()))
+                .collect(Collectors.toList());
     }
 
     public String quiz4() {
