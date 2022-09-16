@@ -53,19 +53,29 @@ public class Quiz4 {
     }
 
     public String quiz4() {
-        return null;
+        return transactions.stream()
+                .map(trade -> trade.getTrader().getName())
+                .distinct()
+                .sorted()
+                .collect(Collectors.joining(","));
     }
 
     public boolean quiz5() {
-        return false;
+        return transactions.stream()
+                .map(trade -> trade.getTrader().getCity())
+                .anyMatch(trade -> "Busan".equals(trade));
     }
 
     public List<Integer> quiz6() {
-        return Collections.emptyList();
+        return transactions.stream()
+                .filter(trade -> "Seoul".equals(trade.getTrader().getCity()))
+                .map(Transaction::getValue)
+                .collect(Collectors.toList());
+
     }
 
     public Integer[] quiz7() {
-        return new Integer[]{0, 0};
+        return null;
     }
 
 }
