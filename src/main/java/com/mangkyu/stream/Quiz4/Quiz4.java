@@ -1,10 +1,7 @@
 package com.mangkyu.stream.Quiz4;
 
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Quiz4 {
@@ -75,7 +72,20 @@ public class Quiz4 {
     }
 
     public Integer[] quiz7() {
-        return null;
+        Integer[] result = new Integer[2];
+        int min = transactions.stream()
+                .mapToInt(transaction -> transaction.getValue())
+                .min().orElseThrow(NoSuchElementException::new);
+
+        int max = transactions.stream()
+                .mapToInt(Transaction::getValue)
+                .reduce(Integer::max)
+                .orElseThrow(NoSuchElementException::new);
+
+        result[1] = min;
+        result[0] = max;
+
+        return result;
     }
 
 }
