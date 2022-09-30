@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.*;
+
 public class Quiz6 {
 
     private Student[] stuArr;
@@ -17,11 +19,12 @@ public class Quiz6 {
     public Map<Boolean, List<Student>> quiz1() {
         return Arrays.stream(stuArr)
                 .filter(stu -> stu.getScore() < 150)
-                .collect(Collectors.groupingBy(Student::isMale));
+                .collect(groupingBy(Student::isMale));
     }
 
     public Map<Integer, Map<Integer, Integer>> quiz2() {
-        return new HashMap<>();
+        return Arrays.stream(stuArr)
+                .collect(groupingBy(Student::getHak,groupingBy(Student::getBan, summingInt(Student::getScore))));
     }
 
     private void init() {
